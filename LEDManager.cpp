@@ -1,20 +1,16 @@
-class LEDManager
+#include <Arduino.h>
+#include "LEDManager.h"
+
+LEDManager::LEDManager(){}
+
+void LEDManager::encenderLED(String status)
 {
-
-    public:
-    
-    void encenderLED(String status)
+    if (status.equals("passed"))
     {
-        if status.equals("ROJO")
-        {
-
-        }
-        else if status.equals("VERDE")
-        {
-
-        }
-        else{
-            
-        }
+      Serial.println(status);
+    }
+    if (status.equals("failed"))
+    {
+      Serial.println(status);
     }
 }

@@ -1,51 +1,38 @@
+
 #include <HTTPClient.h>
+#include "Sensor.h"
 
-class Sensor
+Sensor::Sensor()
 {
-    private:
-    String status;
-    String repoNumber;
-    String token;
-    HTTPClient http;  
+    HTTPClient _http;
+}
 
-    public:
+void Sensor::setHeaders()
+{
+    String repoNumber = "21286906"; //repoNumber;
+    String token = "493t8B9EqYnLeuRYjwJ5YQ"; //token;
+    //21286906
+    //493t8B9EqYnLeuRYjwJ5YQ
 
-    Sensor()
+    _http.begin("https://api.travis-ci.org/repo/" + repoNumber + "/builds");
+    _http.addHeader("Travis-API-Version", "3");
+    _http.addHeader("Authorization", "token " + token);
+    Serial.println("Setee el header");
+}
+
+String Sensor::getStatus()
+{
+    int httpCode = _http.GET();
+    if (httpCode > 0)
     {
-        this.http = HTTPClient();
+        String payload = _http.getString();
+        int start = payload.indexOf("state") + 9;
+        int end = payload.indexOf(",", start) - 1;
+        _status = payload.substring(start, end);
     }
-    
-    void setHeaders()
-    {
-        this.repoNumber = repoNumber;
-        this.token = token;
-        //21286906
-        //493t8B9EqYnLeuRYjwJ5YQ
-
-        http.begin("https://api.travis-ci.org/repo/" + this.repoNumber + "/builds");
-        http.addHeader("Travis-API-Version", "3");
-        http.addHeader("Authorization", "token " + this.token);
-        Serial.println("Setee el header");
-        Serial.println(http.getHeader());
+    else {
+        Serial.println("Error on HTTP request");
     }
-
-    String getStatus()
-    {
-        int httpCode = http.GET();
-        Serial.println(httpCode);
-        if (httpCode > 0) 
-        {
-            String payload = http.getString();
-            Serial.println(payload);
-            int start = payload.indexOf("state") + 9;
-            int end = payload.indexOf(",", start) - 1;
-            this.status = payload.substring(start, end));
-        }
-        else {
-            Serial.println("Error on HTTP request");
-        }
-
-        http.end(); //Free the resources
-
-    }
+    _http.end(); //Free the resources
+    return _status;
 }
