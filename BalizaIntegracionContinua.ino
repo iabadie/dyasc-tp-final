@@ -5,8 +5,8 @@
 Sensor sensor;
 LEDManager ledManager;
 
-const char* ssid = "Mariano";
-const char* password = "mgmarianobk@gmail.com";
+const char* ssid = "AP";
+const char* password = "Passw0rd";
 String status = "";
 int cont = 0;
 
