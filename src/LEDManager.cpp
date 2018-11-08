@@ -1,29 +1,45 @@
 #include <Arduino.h>
 #include "LEDManager.h"
 
-LEDManager::LEDManager(){}
+int GREEN = 14;
+int YELLOW = 26;
+int RED = 33;
+int SHORT_DELAY = 500; // 0.5 seg
+int LONG_DELAY = 1000; // 1 seg
+
+LEDManager::LEDManager(){
+  // Declare used pins on outputs to manage the leds
+  pinMode (2, OUTPUT);
+  pinMode (GREEN, OUTPUT);
+  pinMode (YELLOW, OUTPUT);
+  pinMode (RED, OUTPUT);
+}
 
 void LEDManager::encenderLED(String status)
 {
+    // Check the different status and react in each condition
     if (status.equals("passed"))
     {
-      digitalWrite(2, HIGH);   // Enciende el LED.
+      digitalWrite(GREEN, HIGH);
+      delay(LONG_DELAY);
       Serial.println("Build Success");
     }
     if (status.equals("failed"))
     {
-      digitalWrite(2, HIGH);   // Enciende el LED.
-      delay(1000);                          // Espera un segundo.
-      digitalWrite(2, LOW);    // Apaga el LED.
-      delay(1000);
+      digitalWrite(GREEN, LOW);
+      digitalWrite(RED, HIGH);
+      delay(LONG_DELAY);
+      digitalWrite(RED, LOW);
+      delay(LONG_DELAY);
       Serial.println("Build Failed");
     }
-    if (status.equals("created")) // || status.equals("started"))
+    if (status.equals("created"))
     {
-      digitalWrite(2, HIGH);   // Enciende el LED.
-      delay(500);                          // Espera un segundo.
-      digitalWrite(2, LOW);    // Apaga el LED.
-      delay(500);
+      digitalWrite(GREEN, LOW);
+      digitalWrite(YELLOW, HIGH);
+      delay(SHORT_DELAY);
+      digitalWrite(YELLOW, LOW);
+      delay(SHORT_DELAY);
       Serial.println("Build Created and processing");
     }
 }
