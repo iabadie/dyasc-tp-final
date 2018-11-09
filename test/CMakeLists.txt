@@ -1,13 +1,14 @@
 add_executable(
     unit_tests
-    example_add.cpp
-    example_subtract.cpp
+    BalizaTest.cpp
+    MockHttpClient.cpp
+    MockWifiConnection.cpp
     )
 
 target_link_libraries(
     unit_tests
     gtest_main
-    example
+    gmock_main
     )
 
 add_test(
