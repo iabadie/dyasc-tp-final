@@ -12,7 +12,7 @@ before_install:
   - pip install --user cpp-coveralls
 
 script:
-  - ./test.sh
+  - ./run_test.sh
 
 after_success:
   - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
