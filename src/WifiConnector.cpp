@@ -2,11 +2,11 @@
 #include <WiFi.h>
 #include "WifiConnector.h"
 
-WifiConnector::WifiConnector(){}
+WifiConnector::WifiConnector() {}
 
-void WifiConnector::connectToWifi(String netName, String password) {
+void WifiConnector::connectToWifi(char* netName, char* password) {
 	// Start wifi connection
-	WiFi.begin(ssid, password);
+	WiFi.begin(netName, password);
 	// Check wifi status and when its connected continue with the program
 	while (WiFi.status() != WL_CONNECTED) {
 		delay(500);

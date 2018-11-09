@@ -7,10 +7,11 @@ Sensor::Sensor()
     HTTPClient _http;
 }
 
-Sensor::Sensor(httpClient)
-{
-    HTTPClient httpClient;
-}
+// TODO fix this commented code to support mocked http client for test
+// Sensor::Sensor(HTTPClient httpClient)
+// {
+//     _http = httpClient;
+// }
 
 void Sensor::setHeaders()
 {

@@ -8,7 +8,7 @@ class WifiConnector
     public:
       WifiConnector();
 
-      void connectToWifi(String netName, String password);
+      void connectToWifi(char* netName, char* password);
 };
 
 #endif
