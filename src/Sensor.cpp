@@ -7,14 +7,19 @@ Sensor::Sensor()
     HTTPClient _http;
 }
 
+Sensor::Sensor(httpClient)
+{
+    HTTPClient httpClient;
+}
+
 void Sensor::setHeaders()
 {
-    String repoNumber = "21286906"; //repoNumber;
+    String repoNumber = "21899657"; //repoNumber;
     String token = "493t8B9EqYnLeuRYjwJ5YQ"; //token;
     //21286906
     //493t8B9EqYnLeuRYjwJ5YQ
 
-    _http.begin("https://api.travis-ci.org/repo/" + repoNumber + "/builds");
+    _http.begin("https://api.travis-ci.org/repo/" + repoNumber + "/builds?limit=1");
     _http.addHeader("Travis-API-Version", "3");
     _http.addHeader("Authorization", "token " + token);
     Serial.println("Setee el header");

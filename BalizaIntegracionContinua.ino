@@ -2,6 +2,7 @@
 #include "src/LEDManager.h"
 #include <WiFi.h>
 
+WifiConnector wifiConnecto;
 Sensor sensor;
 LEDManager ledManager;
 
@@ -14,13 +15,7 @@ void setup() {
   Serial.begin(115200);
   delay(4000);   //Delay needed before calling the WiFi.begin
   // Start wifi connection
-  WiFi.begin(ssid, password);
-  // Check wifi status and when its connected continue with the program
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.println("Connecting to WiFi..");
-  }
-  Serial.println("Connected to the WiFi network");
+  wifiConnecto.connectToWifi(ssid, password);
   sensor.setHeaders();
 }
 

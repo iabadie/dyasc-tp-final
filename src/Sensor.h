@@ -14,6 +14,8 @@ class Sensor
     public:
       Sensor();
 
+      Sensor(HTTPClient httpClient);
+
       void setHeaders();
 
       String getStatus();
