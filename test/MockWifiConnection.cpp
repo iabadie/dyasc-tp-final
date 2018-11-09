@@ -1,4 +1,4 @@
-#include "../src/WifiConnector.h"
+#include <WifiConnector.h>
 #include "gmock/gmock.h"
 
 class MockWifiConnection : public WifiConnector {

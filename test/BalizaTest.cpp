@@ -2,7 +2,7 @@
 #include "gtest/gtest.h"
 
 // Classes
-#include "../src/Sensor.h"
+#include "Sensor.h"
 
 // Mocks
 #include "MockHttpClient.h"
@@ -94,4 +94,3 @@ TEST(Sensor, getBuildStatusResultIsFailed)
     delete mockHttpClient;
     delete sensor;
 }
-

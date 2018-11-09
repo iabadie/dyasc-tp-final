@@ -1,15 +1,17 @@
-add_library(example "")
+
+add_library(baliza "")
 
 target_sources(
-    example
-    PRIVATE
-        example.cpp
+    baliza
+
     PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}/example.h
+        ${CMAKE_CURRENT_LIST_DIR}/LEDManager.h
+        ${CMAKE_CURRENT_LIST_DIR}/Sensor.h
+        ${CMAKE_CURRENT_LIST_DIR}/WifiConnector.h
     )
 
 target_include_directories(
-    example
+    baliza
     PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}
     )

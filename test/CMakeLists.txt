@@ -9,6 +9,7 @@ target_link_libraries(
     unit_tests
     gtest_main
     gmock_main
+    baliza
     )
 
 add_test(
