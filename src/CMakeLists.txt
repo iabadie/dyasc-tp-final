@@ -1,17 +1,19 @@
 
-add_library(baliza "")
-
-target_sources(
-    baliza
-
-    PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}/LEDManager.h
-        ${CMAKE_CURRENT_LIST_DIR}/Sensor.h
-        ${CMAKE_CURRENT_LIST_DIR}/WifiConnector.h
+add_executable(
+    LEDManager.cpp
+    Sensor.cpp
+    WifiConnector.cpp
     )
 
-target_include_directories(
-    baliza
-    PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}
+target_link_libraries(
+    unit_tests
+    gtest_main
+    gmock_main
     )
+
+add_test(
+  NAME
+    unit
+  COMMAND
+    ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/unit_tests
+  )
