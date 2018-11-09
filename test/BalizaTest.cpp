@@ -95,4 +95,3 @@ TEST(Sensor, getBuildStatusResultIsFailed)
     delete sensor;
 }
 
-// wifi connection test
