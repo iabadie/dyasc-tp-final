@@ -1,9 +1,11 @@
+#include "src/InterfaceWifi.h"
+#include "src/WifiWrapper.cpp"
 #include "src/WifiConnector.h"
 #include "src/Sensor.h"
 #include "src/LEDManager.h"
 #include <WiFi.h>
 
-WifiConnector wifiConnector;
+WifiWrapper *wifi;
 Sensor sensor;
 LEDManager ledManager;
 
@@ -16,6 +18,7 @@ void setup() {
   Serial.begin(115200);
   delay(4000);   //Delay needed before calling the WiFi.begin
   // Start wifi connection
+  WifiConnector wifiConnector(wifi);
   wifiConnector.connectToWifi(ssid, password);
   sensor.setHeaders();
 }
