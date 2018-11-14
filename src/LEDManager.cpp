@@ -15,8 +15,15 @@ LEDManager::LEDManager(){
   pinMode (RED, OUTPUT);
 }
 
-void LEDManager::encenderLED(String status)
+void LEDManager::turnOffLEDS() {
+  digitalWrite(GREEN, LOW);
+  digitalWrite(RED, LOW);
+  digitalWrite(YELLOW, LOW);
+}
+
+void LEDManager::turnOnLED(String status)
 {
+    turnOffLEDS();
     // Check the different status and react in each condition
     if (status.equals("passed"))
     {
@@ -26,20 +33,20 @@ void LEDManager::encenderLED(String status)
     }
     if (status.equals("failed"))
     {
-      digitalWrite(GREEN, LOW);
       digitalWrite(RED, HIGH);
       delay(LONG_DELAY);
       digitalWrite(RED, LOW);
       delay(LONG_DELAY);
+      digitalWrite(RED, HIGH);
       Serial.println("Build Failed");
     }
     if (status.equals("created"))
     {
-      digitalWrite(GREEN, LOW);
       digitalWrite(YELLOW, HIGH);
       delay(SHORT_DELAY);
       digitalWrite(YELLOW, LOW);
       delay(SHORT_DELAY);
+      digitalWrite(YELLOW, HIGH);
       Serial.println("Build Created and processing");
     }
 }
