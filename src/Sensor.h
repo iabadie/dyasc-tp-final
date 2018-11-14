@@ -1,7 +1,7 @@
 #ifndef SENSOR_H_
 #define SENSOR_H_
 
-#include <HTTPClient.h>
+#include "CiInterface.hpp"
 
 class Sensor
 {
@@ -9,12 +9,12 @@ class Sensor
       String _status;
       String _repoNumber;
       String _token;
-      HTTPClient _http;
+      CiInterface* _http;
 
     public:
       Sensor();
 
-      Sensor(HTTPClient httpClient);
+      Sensor(CiInterface& httpClient);
 
       void setHeaders();
 
