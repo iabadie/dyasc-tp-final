@@ -25,6 +25,6 @@ void loop() {
     status = sensor.getStatus();
     cont = 15;
   }
-  ledManager.encenderLED(status);
+  ledManager.turnOnLED(status);
   cont--;
 }
