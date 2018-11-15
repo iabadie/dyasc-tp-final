@@ -30,8 +30,7 @@ void LEDManager::turnOnLED(String status)
       digitalWrite(GREEN, HIGH);
       delay(LONG_DELAY);
       Serial.println("Build Success");
-    }
-    if (status.equals("failed"))
+    } else if (status.equals("failed"))
     {
       digitalWrite(RED, HIGH);
       delay(LONG_DELAY);
@@ -39,14 +38,20 @@ void LEDManager::turnOnLED(String status)
       delay(LONG_DELAY);
       digitalWrite(RED, HIGH);
       Serial.println("Build Failed");
-    }
-    if (status.equals("created"))
+    } else if (status.equals("created"))
     {
+      digitalWrite(GREEN, HIGH);
+      delay(SHORT_DELAY);
+      digitalWrite(GREEN, LOW);
+      delay(SHORT_DELAY);
+      digitalWrite(GREEN, HIGH);
+      Serial.println("Build Created and processing");
+    } else {
       digitalWrite(YELLOW, HIGH);
       delay(SHORT_DELAY);
       digitalWrite(YELLOW, LOW);
       delay(SHORT_DELAY);
       digitalWrite(YELLOW, HIGH);
-      Serial.println("Build Created and processing");
+      Serial.println("Connection failed");
     }
 }

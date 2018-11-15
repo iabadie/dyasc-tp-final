@@ -7,13 +7,14 @@ WifiConnector wifiConnector;
 Sensor sensor;
 LEDManager ledManager;
 
-char* ssid = "Mariano";
-char* password = "mgmarianobk@gmail.com";
+char* ssid = "AP";
+char* password = "Passw0rd";
 String status = "";
 int cont = 0;
 
 void setup() {
   Serial.begin(115200);
+  ledManager.turnOnLED("");
   delay(4000);   //Delay needed before calling the WiFi.begin
   // Start wifi connection
   wifiConnector.connectToWifi(ssid, password);
