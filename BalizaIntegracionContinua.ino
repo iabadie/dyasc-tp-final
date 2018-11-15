@@ -21,6 +21,7 @@ int cont = 0;
 
 void setup() {
   Serial.begin(115200);
+  ledManager.turnOnLED("");
   delay(4000);   //Delay needed before calling the WiFi.begin
   // Start wifi connection
   wifiConnector.connectToWifi(ssid, password);
@@ -32,6 +33,6 @@ void loop() {
     status = sensor.getStatus();
     cont = 15;
   }
-  ledManager.encenderLED(status);
+  ledManager.turnOnLED(status);
   cont--;
 }
