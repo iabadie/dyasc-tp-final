@@ -1,8 +1,10 @@
 #include "src/WifiConnector.h"
 #include "src/Sensor.h"
 #include "src/LEDManager.h"
+#include "src/AccessPointServer.h"
 #include <WiFi.h>
 
+AccessPointServer ap;
 WifiConnector wifiConnector;
 Sensor sensor;
 LEDManager ledManager;
@@ -16,13 +18,15 @@ void setup() {
   Serial.begin(115200);
   delay(4000);   //Delay needed before calling the WiFi.begin
   // Start wifi connection
-  wifiConnector.connectToWifi(ssid, password);
-  sensor.setHeaders();
+  ap.setup();
+  // wifiConnector.connectToWifi(ssid, password);
+  // sensor.setHeaders();
 }
 
 void loop() {
+  ap.checkServer();
   if (cont == 0) {
-    status = sensor.getStatus();
+    // status = sensor.getStatus();
     cont = 15;
   }
   ledManager.encenderLED(status);
