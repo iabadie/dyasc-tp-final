@@ -14,7 +14,7 @@ class Sensor
     public:
       Sensor();
 
-      Sensor(CiInterface& httpClient);
+      Sensor(CiInterface* httpClient);
 
       void setHeaders();
 

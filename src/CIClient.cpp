@@ -1,17 +1,7 @@
 #include <HTTPClient.h>
-#include <string.h>
 #include "CiInterface.hpp"
 
-using namespace std;
-
-
 class CIClient : public CiInterface {
-
-	public:
-		CIClient()
-		{
-			HTTPClient _http;
-		}
 
 	private:
 		HTTPClient _http;

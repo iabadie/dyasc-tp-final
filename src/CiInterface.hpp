@@ -1,6 +1,5 @@
 #ifndef CiInterface_H_
 #define CiInterface_H_
-#include <string>
 
 using namespace std;
 

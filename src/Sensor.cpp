@@ -1,17 +1,10 @@
-
 #include <HTTPClient.h>
 #include "Sensor.h"
 
-Sensor::Sensor()
+Sensor::Sensor(CiInterface* httpClient)
 {
-    HTTPClient _http;
+    this->_http = httpClient;
 }
-
-// TODO fix this commented code to support mocked http client for test
-// Sensor::Sensor(HTTPClient httpClient)
-// {
-//     _http = httpClient;
-// }
 
 void Sensor::setHeaders()
 {
@@ -20,9 +13,8 @@ void Sensor::setHeaders()
     //21286906
     //493t8B9EqYnLeuRYjwJ5YQ
 
-    _http->begin("https://api.travis-ci.org/repo/" + repoNumber + "/builds?limit=1");
-    _http->addHeader("Travis-API-Version", "3");
-    _http->addHeader("Authorization", "token " + token);
+    _http->begin(repoNumber);
+    _http->addHeaders(token);
     Serial.println("Setee el header");
 }
 
