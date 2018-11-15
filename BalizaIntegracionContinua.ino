@@ -1,12 +1,17 @@
+#include "src/InterfaceWifi.h"
+#include "src/WifiWrapper.cpp"
 #include "src/WifiConnector.h"
 #include "src/Sensor.h"
 #include "src/LEDManager.h"
 #include <WiFi.h>
 #include "src/CIClient.cpp"
 
-WifiConnector wifiConnector;
+// Instance Client and Sensor
 CIClient* client = new CIClient();
 Sensor sensor(client);
+// Instance Wifi
+WifiWrapper* wifi = new WifiWrapper();
+WifiConnector wifiConnector(wifi);
 LEDManager ledManager;
 
 char* ssid = "AP";
