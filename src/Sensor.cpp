@@ -13,17 +13,16 @@ void Sensor::setHeaders()
     //21286906
     //493t8B9EqYnLeuRYjwJ5YQ
 
-    _http->begin(repoNumber);
-    _http->addHeaders(token);
-    Serial.println("Setee el header");
+    this->_http->begin(repoNumber);
+    this->_http->addHeaders(token);
 }
 
 String Sensor::getStatus()
 {
-    int httpCode = _http->GET();
+    int httpCode = this->_http->GET();
     if (httpCode > 0)
     {
-        String payload = _http->getString();
+        String payload = this->_http->getString();
         int start = payload.indexOf("state") + 9;
         int end = payload.indexOf(",", start) - 1;
         _status = payload.substring(start, end);
@@ -31,6 +30,6 @@ String Sensor::getStatus()
     else {
         Serial.println("Error on HTTP request");
     }
-    _http->end(); //Free the resources
+    this->_http->end(); //Free the resources
     return _status;
 }

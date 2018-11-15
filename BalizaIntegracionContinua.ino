@@ -2,13 +2,15 @@
 #include "src/Sensor.h"
 #include "src/LEDManager.h"
 #include <WiFi.h>
+#include "src/CIClient.cpp"
 
 WifiConnector wifiConnector;
-Sensor sensor;
+CIClient* client = new CIClient();
+Sensor sensor(client);
 LEDManager ledManager;
 
-char* ssid = "Mariano";
-char* password = "mgmarianobk@gmail.com";
+char* ssid = "AP";
+char* password = "Passw0rd";
 String status = "";
 int cont = 0;
 

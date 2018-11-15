@@ -6,6 +6,9 @@ class CIClient : public CiInterface {
 	private:
 		HTTPClient _http;
 
+	public:
+	CIClient(){};
+
 	void begin(String repoNumber)
 	{
 		String str = String("https://api.travis-ci.org/repo/" + repoNumber + "/builds?limit=1");

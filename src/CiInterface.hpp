@@ -6,7 +6,6 @@ using namespace std;
 class CiInterface
 {
 	public:
-	 virtual ~CiInterface();
 	 virtual void begin(String repoNumber) = 0;
 	 virtual void addHeaders(String token) = 0;
 	 virtual int GET() = 0;
