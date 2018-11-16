@@ -16,7 +16,7 @@ class Sensor
 
       Sensor(HTTPClient httpClient);
 
-      void setHeaders();
+      void setHeaders(String repoNumber, String token);
 
       String getStatus();
 };

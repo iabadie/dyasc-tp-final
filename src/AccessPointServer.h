@@ -11,6 +11,14 @@ class AccessPointServer
       void setup();
 
       void checkServer();
+
+      String getNetName();
+
+      String getPass();
+
+      String getRepoNumber();
+
+      String getToken();
 };
 
 #endif

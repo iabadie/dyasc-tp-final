@@ -13,10 +13,10 @@ Sensor::Sensor()
 //     _http = httpClient;
 // }
 
-void Sensor::setHeaders()
+void Sensor::setHeaders(String repoNumber, String token)
 {
-    String repoNumber = "21899657"; //repoNumber;
-    String token = "493t8B9EqYnLeuRYjwJ5YQ"; //token;
+    // String repoNumber = "21899657"; //repoNumber;
+    // String token = "493t8B9EqYnLeuRYjwJ5YQ"; //token;
     //21286906
     //493t8B9EqYnLeuRYjwJ5YQ
 

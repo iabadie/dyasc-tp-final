@@ -67,8 +67,8 @@ void AccessPointServer::checkServer(){
 
               Serial.println(header.substring(startNetName, endNetName));
               Serial.println(header.substring(startPassName, header.length()));
-              String inputNetName = header.substring(startNetName, endNetName);
-              String inputPass = header.substring(startPassName, header.length());
+              inputNetName = header.substring(startNetName, endNetName);
+              inputPass = header.substring(startPassName, header.length());
             }
 
             if (header.indexOf("GET /travis?") >= 0 && header.indexOf("?repoNumber=") >= 0 && header.indexOf("token=") >= 0) {
@@ -80,8 +80,8 @@ void AccessPointServer::checkServer(){
 
               Serial.println(header.substring(startRepoNumber, endRepoNumber));
               Serial.println(header.substring(startToken, header.length()));
-              String inputRepoNumber = header.substring(startRepoNumber, endRepoNumber);
-              String inputToken = header.substring(startToken, header.length());
+              inputRepoNumber = header.substring(startRepoNumber, endRepoNumber);
+              inputToken = header.substring(startToken, header.length());
             }
 
             // Display the HTML web page
@@ -141,3 +141,11 @@ void AccessPointServer::checkServer(){
     Serial.println("");
   }
 }
+
+String AccessPointServer::getNetName() { return inputNetName; };
+
+String AccessPointServer::getPass() { return inputPass; };
+
+String AccessPointServer::getRepoNumber() { return inputRepoNumber; };
+
+String AccessPointServer::getToken() { return inputToken;};
