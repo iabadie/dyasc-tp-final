@@ -4,8 +4,8 @@
 #include <WiFi.h>
 
 // Replace with your network credentials
-const char* apName = "ESP32-Access-Point";
-const char* pass = "123456789";
+const char* apName = "TP-BIC-Aba-Ro";
+const char* pass = "12345678";
 
 // Set web server port number to 80
 WiFiServer server(80);
@@ -13,16 +13,11 @@ WiFiServer server(80);
 // Variable to store the HTTP request
 String header;
 
-// Auxiliar variables to store the current output state
-String output26State = "off";
-String output27State = "off";
-
-// Assign output variables to GPIO pins
-const int output26 = 26;
-const int output27 = 27;
-
 String inputNetName = "";
-String inputPAss = "";
+String inputPass = "";
+
+String inputRepoNumber = "";
+String inputToken = "";
 
 bool isConnected = false;
 bool isConnecting = false;
@@ -69,9 +64,24 @@ void AccessPointServer::checkServer(){
               int endNetName = header.indexOf("&");
               // Get pass string
               int startPassName = header.indexOf("password=") + 9;
-              // int endPassName = header.substring(header.indexOf("&"));
 
+              Serial.println(header.substring(startNetName, endNetName));
               Serial.println(header.substring(startPassName, header.length()));
+              String inputNetName = header.substring(startNetName, endNetName);
+              String inputPass = header.substring(startPassName, header.length());
+            }
+
+            if (header.indexOf("GET /travis?") >= 0 && header.indexOf("?repoNumber=") >= 0 && header.indexOf("token=") >= 0) {
+              // Get networkName string
+              int startRepoNumber = header.indexOf("repoNumber=") + 11;
+              int endRepoNumber = header.indexOf("&");
+              // Get pass string
+              int startToken = header.indexOf("token=") + 6;
+
+              Serial.println(header.substring(startRepoNumber, endRepoNumber));
+              Serial.println(header.substring(startToken, header.length()));
+              String inputRepoNumber = header.substring(startRepoNumber, endRepoNumber);
+              String inputToken = header.substring(startToken, header.length());
             }
 
             // Display the HTML web page
@@ -95,12 +105,20 @@ void AccessPointServer::checkServer(){
             //   client.println("<h3>Ingrese las credenciales para conectar a una red wifi.</h3>");
             // } else {
             //   // Is not connected
-              client.println("<h3>Ingrese las credenciales para conectar a una red wifi.</h3>");
-              client.println("<form action=\"/credentials\">");
-              client.println("Nombre de red:<br>");
-              client.println("<input type=\"text\" name=\"networkName\" value=\"Red\">");
-              client.println("<br>Password:<br><input type=\"text\" name=\"password\" value=\"Pass\">");
-              client.println("<br><br><input type=\"submit\" value=\"Submit\"></form>");
+
+            client.println("<h3>Ingrese las credenciales para conectar a una red wifi.</h3>");
+            client.println("<form action=\"/credentials\">");
+            client.println("Nombre de red:<br>");
+            client.println("<input type=\"text\" name=\"networkName\" value=\"\" placeholder=\"Nombre de la red\"><br>");
+            client.println("<br>Password:<br><input type=\"text\" name=\"password\" value=\"\" placeholder=\"Password de la red\">");
+            client.println("<br><br><input type=\"submit\" value=\"Submit\"></form>");
+            client.println("<h3>Ingrese sus credenciales de Travis.</h3>");
+            client.println("<form action=\"/travis\">");
+            client.println("Numero de repositorio:<br>");
+            client.println("<input type=\"text\" name=\"repoNumber\" value=\"\" placeholder=\"Numero de repositorio\"><br>");
+            client.println("<br>Token de travis:<br>");
+            client.println("<input type=\"text\" name=\"token\" value=\"\" placeholder=\"Token de autenticacion\">");
+            client.println("<br><br><input type=\"submit\" value=\"Submit\"></form>");
             client.println("</body></html>");
 
             // The HTTP response ends with another blank line
