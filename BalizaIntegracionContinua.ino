@@ -5,34 +5,25 @@
 #include "src/LEDManager.h"
 #include <WiFi.h>
 #include "src/CIClient.cpp"
-
+#include "src/Brain.h"
 // Instance Client and Sensor
 CIClient* client = new CIClient();
-Sensor sensor(client);
+Sensor* sensor = new Sensor(client);
 // Instance Wifi
 WifiWrapper* wifi = new WifiWrapper();
-WifiConnector wifiConnector(wifi);
-LEDManager ledManager;
+WifiConnector* wifiConnector = new WifiConnector(wifi);
+// LEd instance
+LEDManager* ledManager = new LEDManager();
+// Brain instance
+Brain* brain = new Brain(ledManager, wifiConnector, sensor);
 
-char* ssid = "AP";
-char* password = "Passw0rd";
-String status = "";
-int cont = 0;
+char* ssid = "Pao";
+char* password = "paola4499";
 
 void setup() {
-  Serial.begin(115200);
-  ledManager.turnOnLED("");
-  delay(4000);   //Delay needed before calling the WiFi.begin
-  // Start wifi connection
-  wifiConnector.connectToWifi(ssid, password);
-  sensor.setHeaders();
+  brain->setup(ssid, password);
 }
 
 void loop() {
-  if (cont == 0) {
-    status = sensor.getStatus();
-    cont = 15;
-  }
-  ledManager.turnOnLED(status);
-  cont--;
+  brain->runProgram();
 }
