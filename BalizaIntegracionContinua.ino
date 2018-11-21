@@ -21,6 +21,8 @@ char* ssid = "Mariano";
 char* password = "mgmarianobk@gmail.com";
 
 void setup() {
+  Serial.begin(115200);
+  delay(4000);   //Delay needed before calling the WiFi.begin
   brain->setup(ssid, password);
 }
 
