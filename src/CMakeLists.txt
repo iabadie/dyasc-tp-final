@@ -7,9 +7,9 @@ target_sources(
     PRIVATE
         Brain.cpp
     PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}/LEDManagerInterface.h
-        ${CMAKE_CURRENT_LIST_DIR}/SensorInterface.h
-        ${CMAKE_CURRENT_LIST_DIR}/WifiConnectorInterface.h
+        ${CMAKE_CURRENT_LIST_DIR}/LEDManagerInterface.hpp
+        ${CMAKE_CURRENT_LIST_DIR}/SensorInterface.hpp
+        ${CMAKE_CURRENT_LIST_DIR}/WifiConnectorInterface.hpp
         ${CMAKE_CURRENT_LIST_DIR}/Brain.h
     )
 
