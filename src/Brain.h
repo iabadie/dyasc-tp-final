@@ -1,21 +1,21 @@
 #ifndef BRAIN_H_
 #define BRAIN_H_
 
-#include "WifiConnector.h"
-#include "LEDManager.h"
-#include "Sensor.h"
+#include "WifiConnectorInterface.hpp"
+#include "LEDManagerInterface.hpp"
+#include "SensorInterface.hpp"
 
 class Brain
 {
     private:
-      LEDManager *ledManager;
-      WifiConnector *wifi;
-      Sensor *sensor;
+      LEDManagerInterface *ledManager;
+      WifiConnectorInterface *wifi;
+      SensorInterface *sensor;
       int status = -1;
       int cont = 0;
 
     public:
-      Brain(LEDManager *ledManager, WifiConnector *wifi, Sensor *sensor);
+      Brain(LEDManagerInterface *ledManager, WifiConnectorInterface *wifi, SensorInterface *sensor);
 
       void setup(char* ssid, char* password);
 

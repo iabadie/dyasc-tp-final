@@ -1,9 +1,9 @@
 #include "Brain.h"
-#include "WifiConnector.h"
-#include "LEDManager.h"
-#include "Sensor.h"
+#include "WifiConnectorInterface.hpp"
+#include "LEDManagerInterface.hpp"
+#include "SensorInterface.hpp"
 
-Brain::Brain(LEDManager *ledManager, WifiConnector *wifi, Sensor *sensor) {
+Brain::Brain(LEDManagerInterface *ledManager, WifiConnectorInterface *wifi, SensorInterface *sensor) {
   this->ledManager = ledManager;
   this->wifi = wifi;
   this->sensor = sensor;
