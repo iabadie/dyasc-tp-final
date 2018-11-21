@@ -27,7 +27,7 @@ TEST(Test, getBuildStatusResultIsOKAndBrainDoLedManagerTurnGreenStateOn)
 	EXPECT_CALL(*mockWifiConnector, connectToWifi(net, pass))
 		.Times(1);
 
-	EXPECT_CALL(*mockSensor, setHeader())
+	EXPECT_CALL(*mockSensor, setHeaders())
 		.Times(1);
 
 	EXPECT_CALL(*mockSensor, getStatus())
