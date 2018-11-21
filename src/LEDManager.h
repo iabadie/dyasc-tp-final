@@ -8,7 +8,7 @@ class LEDManager
     public:
       LEDManager();
 
-      void turnOnLED(String status);
+      void turnOnLED(int status);
 
       void turnOffLEDS();
 };

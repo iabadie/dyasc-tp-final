@@ -1,4 +1,5 @@
 #include <HTTPClient.h>
+#include "SensorInterface.hpp"
 #include "Sensor.h"
 
 Sensor::Sensor(CiInterface* httpClient)
@@ -32,4 +33,27 @@ String Sensor::getStatus()
     }
     this->_http->end(); //Free the resources
     return _status;
+}
+
+void Sensor::setIntegerStatus(String status)
+{
+    if (status.equals("passed"))
+    {
+      integerStatus = 1;
+    } else if (status.equals("failed"))
+    {
+      integerStatus = 0;
+    } else if (status.equals("created"))
+    {
+      integerStatus = 2;
+    }else{
+        integerStatus = 3;
+    }
+
+    return integerStatus;
+}
+
+int Sensor::getIntegerStatus()
+{
+    return integerStatus;
 }

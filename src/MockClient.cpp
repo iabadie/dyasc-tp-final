@@ -1,5 +1,5 @@
-#include <HTTPClient.h>
 #include "CiInterface.hpp"
+#include <String>
 
 class MockClient : public CiInterface {
 

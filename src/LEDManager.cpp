@@ -21,16 +21,16 @@ void LEDManager::turnOffLEDS() {
   digitalWrite(YELLOW, LOW);
 }
 
-void LEDManager::turnOnLED(String status)
+void LEDManager::turnOnLED(int status)
 {
     turnOffLEDS();
     // Check the different status and react in each condition
-    if (status.equals("passed"))
+    if (status == 1)
     {
       digitalWrite(GREEN, HIGH);
       delay(LONG_DELAY);
       Serial.println("Build Success");
-    } else if (status.equals("failed"))
+    } else if (status == 0)
     {
       digitalWrite(RED, HIGH);
       delay(LONG_DELAY);
@@ -38,7 +38,7 @@ void LEDManager::turnOnLED(String status)
       delay(LONG_DELAY);
       digitalWrite(RED, HIGH);
       Serial.println("Build Failed");
-    } else if (status.equals("created"))
+    } else if (status == 2)
     {
       digitalWrite(GREEN, HIGH);
       delay(SHORT_DELAY);
