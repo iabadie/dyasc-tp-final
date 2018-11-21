@@ -19,7 +19,7 @@ TEST(Test, getBuildStatusResultIsOKAndBrainDoLedManagerTurnGreenStateOn)
 	MockLEDManager* mockLEDManager = new MockLEDManager();
 	MockSensor* mockSensor = new MockSensor();
 	MockWifiConnector* mockWifiConnector = new MockWifiConnector();
-	Brain* brain = new Brain(mockLEDManager, mockSensor, mockWifiConnector);
+	Brain* brain = new Brain(mockLEDManager, mockWifiConnector, mockSensor);
 	char* net = "net";
 	char* pass = "pass";
 	// Mocked expected actions
@@ -41,8 +41,8 @@ TEST(Test, getBuildStatusResultIsOKAndBrainDoLedManagerTurnGreenStateOn)
 		.WillOnce(Return());
 
 		// Program actions
-		brain.setup(net, pass);
-		int resultStatus = brain.runProgram();
+		brain->setup(net, pass);
+		int resultStatus = brain->runProgram();
 
     // Assertion
     ASSERT_EQ(resultStatus, 1);
