@@ -1,5 +1,6 @@
 // Libs
 #include "gtest/gtest.h"
+#include "gmock/gmock.h"
 
 // Classes
 #include "Brain.h"
@@ -23,22 +24,19 @@ TEST(Test, getBuildStatusResultIsOKAndBrainDoLedManagerTurnGreenStateOn)
 	char* net = "net";
 	char* pass = "pass";
 	// Mocked expected actions
-	EXPECT_CALL(mockWifiConnector*, connectToWifi(net, pass))
-		.Times(1)
-		.WillOnce(Return());
+	EXPECT_CALL(*mockWifiConnector, connectToWifi(net, pass))
+		.Times(1);
 
-	EXPECT_CALL(mockSensor*, setHeader())
-		.Times(1)
-		.WillOnce(Return());
+	EXPECT_CALL(*mockSensor, setHeader())
+		.Times(1);
 
-	EXPECT_CALL(mockSensor*, getStatus())
+	EXPECT_CALL(*mockSensor, getStatus())
 		.Times(1)
 		.WillOnce(Return(1));
 
 
-	EXPECT_CALL(mockLEDManager*, turnOnLED(1))
-		.Times(1)
-		.WillOnce(Return());
+	EXPECT_CALL(*mockLEDManager, turnOnLED(1))
+		.Times(1);
 
 		// Program actions
 		brain->setup(net, pass);
