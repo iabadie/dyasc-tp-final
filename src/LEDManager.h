@@ -1,9 +1,10 @@
 #ifndef LEDMANAGER_H_
 #define LEDMANAGER_H_
 
+#include "LEDManagerInterface.hpp"
 #include <Arduino.h>
 
-class LEDManager
+class LEDManager : public LEDManagerInterface
 {
     public:
       LEDManager();

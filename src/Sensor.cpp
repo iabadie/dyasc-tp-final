@@ -18,7 +18,7 @@ void Sensor::setHeaders()
     this->_http->addHeaders(token);
 }
 
-String Sensor::getStatus()
+int Sensor::getStatus()
 {
     int httpCode = this->_http->GET();
     if (httpCode > 0)
@@ -26,7 +26,7 @@ String Sensor::getStatus()
         String payload = this->_http->getString();
         int start = payload.indexOf("state") + 9;
         int end = payload.indexOf(",", start) - 1;
-        _status = payload.substring(start, end);
+        _status = this->setIntegerStatus(payload.substring(start, end));
     }
     else {
         Serial.println("Error on HTTP request");
@@ -35,7 +35,7 @@ String Sensor::getStatus()
     return _status;
 }
 
-void Sensor::setIntegerStatus(String status)
+int Sensor::setIntegerStatus(String status)
 {
     if (status.equals("passed"))
     {
@@ -47,13 +47,8 @@ void Sensor::setIntegerStatus(String status)
     {
       integerStatus = 2;
     }else{
-        integerStatus = 3;
+        integerStatus = -1;
     }
 
-    return integerStatus;
-}
-
-int Sensor::getIntegerStatus()
-{
     return integerStatus;
 }

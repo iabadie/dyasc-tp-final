@@ -17,8 +17,8 @@ LEDManager* ledManager = new LEDManager();
 // Brain instance
 Brain* brain = new Brain(ledManager, wifiConnector, sensor);
 
-char* ssid = "Pao";
-char* password = "paola4499";
+char* ssid = "Mariano";
+char* password = "mgmarianobk@gmail.com";
 
 void setup() {
   brain->setup(ssid, password);

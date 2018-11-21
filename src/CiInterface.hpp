@@ -1,6 +1,8 @@
 #ifndef CiInterface_H_
 #define CiInterface_H_
 
+#include <Arduino.h>
+
 using namespace std;
 
 class CiInterface

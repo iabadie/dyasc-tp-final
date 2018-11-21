@@ -1,13 +1,12 @@
-#ifndef SensorInterface_H_
-#define SensorInterface_H_
+#ifndef SENSORINTERFACE_H_
+#define SENSORINTERFACE_H_
 
-#include "CiInterface.hpp"
-
+// Interfaz utilizada para el componente de SENSOR
 class SensorInterface
 {
     public:
       virtual void setHeaders();
-      virtual int getIntegerStatus();
+      virtual int getStatus();
 };
 
 #endif

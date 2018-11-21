@@ -7,7 +7,7 @@
 class Sensor : public SensorInterface
 {
     private:
-      String _status;
+      int _status = -1;  // -1 representa casos que no matchea con los status deseados
       String _repoNumber;
       String _token;
       CiInterface* _http;
@@ -20,13 +20,10 @@ class Sensor : public SensorInterface
 
       void setHeaders();
 
-      String getStatus();
+      int getStatus();
 
       //Tuve que meter este para que reciba el string. Solo implementado en Sensor.h
-      void setIntegerStatus(String status);
-
-      //Este lo hereda de la interfaz... Como no recibe ni devuelve String... PODEMOS MOCKEARLO!!
-      int getIntegerStatus();
+      int setIntegerStatus(String status);
 };
 
 #endif

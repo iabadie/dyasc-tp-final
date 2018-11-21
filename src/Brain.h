@@ -11,7 +11,7 @@ class Brain
       LEDManager *ledManager;
       WifiConnector *wifi;
       Sensor *sensor;
-      String status = "";
+      int status = -1;
       int cont = 0;
 
     public:
