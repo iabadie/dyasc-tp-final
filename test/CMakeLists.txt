@@ -1,8 +1,9 @@
 add_executable(
     unit_tests
     BalizaTest.cpp
-    MockHttpClient.cpp
-    MockWifiConnection.cpp
+    MockLEDManager.cpp
+    MockWifiConnector.cpp
+    MockSensor.cpp
     )
 
 target_link_libraries(

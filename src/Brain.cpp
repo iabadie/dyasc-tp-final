@@ -22,11 +22,12 @@ void Brain::setup(char* ssid, char* password){
   this->sensor->setHeaders();
 }
 
-void Brain::runProgram() {
+int Brain::runProgram() {
   if (this->cont == 0) {
     this->status = this->sensor->getStatus();
     this->cont = 15;
   }
   this->ledManager->turnOnLED(this->status);
   this->cont--;
+  return this->status;
 }

@@ -19,7 +19,7 @@ class Brain
 
       void setup(char* ssid, char* password);
 
-      void runProgram();
+      int runProgram();
 };
 
 #endif
