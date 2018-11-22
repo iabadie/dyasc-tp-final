@@ -35,6 +35,9 @@ TEST(Test, getBuildStatusResultIsOKAndBrainDoLedManagerTurnGreenStateOn)
 		.WillOnce(Return(1));
 
 
+	EXPECT_CALL(*mockLEDManager, turnOnLED(-1))
+		.Times(1);
+
 	EXPECT_CALL(*mockLEDManager, turnOnLED(1))
 		.Times(1);
 
