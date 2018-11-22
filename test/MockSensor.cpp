@@ -1,5 +1,5 @@
 #include "gmock/gmock.h"
-#include "SensorInterface.hpp"
+#include <SensorInterface.hpp>
 
 class MockSensor : public SensorInterface {
     public:

@@ -5,9 +5,9 @@
 class LEDManagerInterface
 {
     public:
-      virtual void turnOnLED(int status);
+      virtual void turnOnLED(int status) = 0;
 
-      virtual void turnOffLEDS();
+      virtual void turnOffLEDS() = 0;
 };
 
 #endif

@@ -5,7 +5,7 @@
 class WifiConnectorInterface
 {
     public:
-      virtual void connectToWifi(char* netName, char* password);
+      virtual void connectToWifi(char* netName, char* password) = 0;
 };
 
 #endif

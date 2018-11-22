@@ -1,5 +1,5 @@
 #include "gmock/gmock.h"
-#include "WifiConnectorInterface.hpp"
+#include <WifiConnectorInterface.hpp>
 
 class MockWifiConnector : public WifiConnectorInterface {
     public:

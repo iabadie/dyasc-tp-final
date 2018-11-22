@@ -1,5 +1,5 @@
 #include "gmock/gmock.h"
-#include "LEDManagerInterface.hpp"
+#include <LEDManagerInterface.hpp>
 
 class MockLEDManager : public LEDManagerInterface {
     public:

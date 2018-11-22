@@ -5,8 +5,8 @@
 class SensorInterface
 {
     public:
-      virtual void setHeaders();
-      virtual int getStatus();
+      virtual void setHeaders() = 0;
+      virtual int getStatus() = 0;
 };
 
 #endif
