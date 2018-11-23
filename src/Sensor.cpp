@@ -43,6 +43,9 @@ int Sensor::setIntegerStatus(String status)
     } else if (status.equals("failed"))
     {
       integerStatus = 0;
+    } else if (status.equals("errored"))
+    {
+      integerStatus = 0;
     } else if (status.equals("created"))
     {
       integerStatus = 2;

@@ -17,8 +17,8 @@ LEDManager* ledManager = new LEDManager();
 // Brain instance
 Brain* brain = new Brain(ledManager, wifiConnector, sensor);
 
-char* ssid = "Mariano";
-char* password = "mgmarianobk@gmail.com";
+char* ssid = "AP";
+char* password = "Passw0rd";
 
 void setup() {
   Serial.begin(115200);

@@ -33,17 +33,17 @@ void LEDManager::turnOnLED(int status)
     } else if (status == 0)
     {
       digitalWrite(RED, HIGH);
-      delay(LONG_DELAY);
+      delay(SHORT_DELAY);
       digitalWrite(RED, LOW);
-      delay(LONG_DELAY);
+      delay(SHORT_DELAY);
       digitalWrite(RED, HIGH);
       Serial.println("Build Failed");
     } else if (status == 2)
     {
       digitalWrite(GREEN, HIGH);
-      delay(SHORT_DELAY);
+      delay(LONG_DELAY);
       digitalWrite(GREEN, LOW);
-      delay(SHORT_DELAY);
+      delay(LONG_DELAY);
       digitalWrite(GREEN, HIGH);
       Serial.println("Build Created and processing");
     } else {
