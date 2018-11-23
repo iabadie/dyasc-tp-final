@@ -1,24 +1,29 @@
 #ifndef SENSOR_H_
 #define SENSOR_H_
 
-#include <HTTPClient.h>
+#include "SensorInterface.hpp"
+#include "CiInterface.hpp"
 
-class Sensor
+class Sensor : public SensorInterface
 {
     private:
-      String _status;
-      String _repoNumber;
-      String _token;
-      HTTPClient _http;
+      int _status = -1;  // -1 representa casos que no matchea con los status deseados
+      char* _repoNumber;
+      char* _token;
+      CiInterface* _http;
+      int integerStatus = 3;
 
     public:
       Sensor();
 
-      Sensor(HTTPClient httpClient);
+      Sensor(CiInterface* httpClient);
 
-      void setHeaders(String repoNumber, String token);
+      void setHeaders(char* repoNumber, char* token);
 
-      String getStatus();
+      int getStatus();
+
+      //Tuve que meter este para que reciba el string. Solo implementado en Sensor.h
+      int setIntegerStatus(String status);
 };
 
 #endif

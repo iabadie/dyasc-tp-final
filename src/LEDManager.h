@@ -1,14 +1,16 @@
 #ifndef LEDMANAGER_H_
 #define LEDMANAGER_H_
 
-#include <Arduino.h>
+#include "LEDManagerInterface.hpp"
 
-class LEDManager
+class LEDManager : public LEDManagerInterface
 {
     public:
       LEDManager();
 
-      void encenderLED(String status);
+      void turnOnLED(int status);
+
+      void turnOffLEDS();
 };
 
 #endif

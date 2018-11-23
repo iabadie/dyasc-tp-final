@@ -3,6 +3,18 @@
 // Load Wi-Fi library
 #include <WiFi.h>
 
+
+static void getChars(char* text, String argString) {
+  char auxVar[argString.length()+1];
+  strcpy(auxVar, argString.c_str());
+  Serial.println("----START----");
+  Serial.println(auxVar);
+  text = auxVar;
+  Serial.println(text);
+  Serial.println("----END----");
+  //  return auxVar;
+}
+
 // Replace with your network credentials
 const char* apName = "TP-BIC-Aba-Ro";
 const char* pass = "12345678";
@@ -64,11 +76,12 @@ void AccessPointServer::checkServer(){
               int endNetName = header.indexOf("&");
               // Get pass string
               int startPassName = header.indexOf("password=") + 9;
+              int endPassName = header.indexOf(" ",startPassName);
 
               Serial.println(header.substring(startNetName, endNetName));
-              Serial.println(header.substring(startPassName, header.length()));
+              Serial.println(header.substring(startPassName, endPassName));
               inputNetName = header.substring(startNetName, endNetName);
-              inputPass = header.substring(startPassName, header.length());
+              inputPass = header.substring(startPassName, endPassName);
             }
 
             if (header.indexOf("GET /travis?") >= 0 && header.indexOf("?repoNumber=") >= 0 && header.indexOf("token=") >= 0) {
@@ -77,11 +90,12 @@ void AccessPointServer::checkServer(){
               int endRepoNumber = header.indexOf("&");
               // Get pass string
               int startToken = header.indexOf("token=") + 6;
+              int endToken = header.indexOf(" ");
 
               Serial.println(header.substring(startRepoNumber, endRepoNumber));
-              Serial.println(header.substring(startToken, header.length()));
+              Serial.println(header.substring(startToken, endToken));
               inputRepoNumber = header.substring(startRepoNumber, endRepoNumber);
-              inputToken = header.substring(startToken, header.length());
+              inputToken = header.substring(startToken, endToken);
             }
 
             // Display the HTML web page
@@ -142,10 +156,12 @@ void AccessPointServer::checkServer(){
   }
 }
 
-String AccessPointServer::getNetName() { return inputNetName; };
+void AccessPointServer::getNetName(char* text) {
+  getChars(text, inputNetName);
+};
 
-String AccessPointServer::getPass() { return inputPass; };
+void AccessPointServer::getPass(char* text) { getChars(text, inputPass); };
 
-String AccessPointServer::getRepoNumber() { return inputRepoNumber; };
+void AccessPointServer::getRepoNumber(char* text) { getChars(text, inputRepoNumber); };
 
-String AccessPointServer::getToken() { return inputToken;};
+void AccessPointServer::getToken(char* text) { getChars(text, inputToken);};

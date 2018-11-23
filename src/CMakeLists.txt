@@ -5,11 +5,12 @@ target_sources(
     baliza
 
     PRIVATE
-        Sensor.cpp
+        Brain.cpp
     PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}/LEDManager.h
-        ${CMAKE_CURRENT_LIST_DIR}/Sensor.h
-        ${CMAKE_CURRENT_LIST_DIR}/WifiConnector.h
+        ${CMAKE_CURRENT_LIST_DIR}/LEDManagerInterface.hpp
+        ${CMAKE_CURRENT_LIST_DIR}/SensorInterface.hpp
+        ${CMAKE_CURRENT_LIST_DIR}/WifiConnectorInterface.hpp
+        ${CMAKE_CURRENT_LIST_DIR}/Brain.h
     )
 
 target_include_directories(

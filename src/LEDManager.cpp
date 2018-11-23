@@ -15,31 +15,43 @@ LEDManager::LEDManager(){
   pinMode (RED, OUTPUT);
 }
 
-void LEDManager::encenderLED(String status)
+void LEDManager::turnOffLEDS() {
+  digitalWrite(GREEN, LOW);
+  digitalWrite(RED, LOW);
+  digitalWrite(YELLOW, LOW);
+}
+
+void LEDManager::turnOnLED(int status)
 {
+    turnOffLEDS();
     // Check the different status and react in each condition
-    if (status.equals("passed"))
+    if (status == 1)
     {
       digitalWrite(GREEN, HIGH);
       delay(LONG_DELAY);
       Serial.println("Build Success");
-    }
-    if (status.equals("failed"))
+    } else if (status == 0)
     {
-      digitalWrite(GREEN, LOW);
       digitalWrite(RED, HIGH);
       delay(LONG_DELAY);
       digitalWrite(RED, LOW);
       delay(LONG_DELAY);
+      digitalWrite(RED, HIGH);
       Serial.println("Build Failed");
-    }
-    if (status.equals("created"))
+    } else if (status == 2)
     {
+      digitalWrite(GREEN, HIGH);
+      delay(SHORT_DELAY);
       digitalWrite(GREEN, LOW);
+      delay(SHORT_DELAY);
+      digitalWrite(GREEN, HIGH);
+      Serial.println("Build Created and processing");
+    } else {
       digitalWrite(YELLOW, HIGH);
       delay(SHORT_DELAY);
       digitalWrite(YELLOW, LOW);
       delay(SHORT_DELAY);
-      Serial.println("Build Created and processing");
+      digitalWrite(YELLOW, HIGH);
+      Serial.println("Connection failed");
     }
 }

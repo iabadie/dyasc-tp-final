@@ -1,9 +1,10 @@
 #ifndef ACCESSPOINTSERVER_H_
 #define ACCESSPOINTSERVER_H_
 
+#include "AccessPointServerInterface.hpp"
 #include <WiFi.h>
 
-class AccessPointServer
+class AccessPointServer : public AccessPointServerInterface
 {
     public:
       AccessPointServer();
@@ -12,13 +13,13 @@ class AccessPointServer
 
       void checkServer();
 
-      String getNetName();
+      void getNetName(char* text);
 
-      String getPass();
+      void getPass(char* text);
 
-      String getRepoNumber();
+      void getRepoNumber(char* text);
 
-      String getToken();
+      void getToken(char* text);
 };
 
 #endif
